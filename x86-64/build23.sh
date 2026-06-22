@@ -44,19 +44,45 @@ fi
 echo "$(date '+%Y-%m-%d %H:%M:%S') - 开始构建..."
 # 定义所需安装的包列表 下列插件你都可以自行删减
 PACKAGES=""
-PACKAGES="$PACKAGES curl"
+# 基础工具
+PACKAGES="$PACKAGES curl wget ca-certificates unzip coreutils-nohup bash"
+# iStore商店全套
+PACKAGES="$PACKAGES istore istore-webui istore-file luci-app-store luci-i18n-store-zh-cn"
+# 系统磁盘/防火墙汉化
 PACKAGES="$PACKAGES luci-i18n-diskman-zh-cn"
 PACKAGES="$PACKAGES luci-i18n-firewall-zh-cn"
 PACKAGES="$PACKAGES luci-i18n-filebrowser-zh-cn"
+# 主题
 PACKAGES="$PACKAGES luci-theme-argon"
 PACKAGES="$PACKAGES luci-app-argon-config"
 PACKAGES="$PACKAGES luci-i18n-argon-config-zh-cn"
 PACKAGES="$PACKAGES luci-i18n-opkg-zh-cn"
+# 网页终端
 PACKAGES="$PACKAGES luci-i18n-ttyd-zh-cn"
-PACKAGES="$PACKAGES xray-core hysteria luci-i18n-passwall-zh-cn"
-PACKAGES="$PACKAGES luci-app-openclash"
-PACKAGES="$PACKAGES luci-i18n-homeproxy-zh-cn"
+# SSH
 PACKAGES="$PACKAGES openssh-sftp-server"
+
+# ========== 新增：网速监控+带宽控制 ==========
+# 流量统计
+PACKAGES="$PACKAGES luci-app-nlbwmon nlbwmon luci-i18n-nlbwmon-zh-cn"
+# 实时全系统监控
+PACKAGES="$PACKAGES luci-app-netdata netdata"
+# QoS网速限速、缓冲优化
+PACKAGES="$PACKAGES luci-app-sqm sqm-scripts luci-i18n-sqm-zh-cn"
+# 一键测速
+PACKAGES="$PACKAGES luci-app-netspeedtest"
+# 终端设备流量排行
+PACKAGES="$PACKAGES luci-app-wrtbwmon wrtbwmon"
+
+# ========== Passwall 代理全套 ==========
+PACKAGES="$PACKAGES xray-core hysteria luci-app-passwall passwall2 luci-i18n-passwall-zh-cn"
+
+# ========== OpenClash 全套+依赖 ==========
+PACKAGES="$PACKAGES luci-app-openclash dnsmasq-full ipset ip-full kmod-tun kmod-nft-tproxy ruby ruby-yaml"
+
+# 首页代理
+PACKAGES="$PACKAGES luci-i18n-homeproxy-zh-cn"
+
 # ======== shell/custom-packages.sh =======
 # 合并imm仓库以外的第三方插件
 PACKAGES="$PACKAGES $CUSTOM_PACKAGES"
