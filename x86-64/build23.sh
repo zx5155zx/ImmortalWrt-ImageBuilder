@@ -51,9 +51,7 @@ PACKAGES="$PACKAGES istore istore-webui istore-file luci-app-store luci-i18n-sto
 # 系统磁盘/防火墙汉化
 PACKAGES="$PACKAGES luci-i18n-diskman-zh-cn"
 PACKAGES="$PACKAGES luci-i18n-firewall-zh-cn"
-PACKAGES="$PACKAGES luci-i18n-filebrowser-zh-cn"
-# 定时重启
-PACKAGES="$PACKAGES luci-app-autoreboot luci-i18n-autoreboot-zh-cn"
+
 # 主题
 PACKAGES="$PACKAGES luci-theme-argon"
 PACKAGES="$PACKAGES luci-app-argon-config"
